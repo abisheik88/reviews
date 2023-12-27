@@ -1,0 +1,26 @@
+type Review @key(fields: "id") {
+  id: ID
+  result: [Aaa]
+}
+
+type Aaa {
+  id: ID!
+  rating: String
+  description: String
+  hotel_id: String
+}
+
+input CreateReview {
+  rating: Int!
+  description: String!
+  hotel_id: ID!
+}
+
+type Query {
+  review(id: ID!): Review
+  reviews: [Review!]
+}
+
+type Mutation {
+  createReview(input: CreateReview): Review!
+}
